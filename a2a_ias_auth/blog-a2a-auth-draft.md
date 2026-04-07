@@ -4,6 +4,8 @@ In the last blog post, we had a first look into integrating a Pro-Code Agent int
 
 ## Scenario
 
+![Joule A2A Auth Scenario](../images/joule-a2a-auth.drawio.png)
+
 Our target is to use SAP Cloud Identity Services - Identity Authentication Service (short: IAS) to take care of the authentication. We will implement the authentication check on the Python side using middleware that validates JWT tokens from IAS.
 
 **Important distinction**: In this blog, we focus on protecting the agent from unauthorized access using the OAuth2 Client Credentials flow. This is app-to-app authentication - we verify that the calling application (e.g., Joule) has valid credentials to access our agent. The token identifies the *application*, not the end user.
@@ -306,7 +308,7 @@ In your BTP Cockpit, create a destination for your secured agent:
 
 Once the destination is configured, you can interact with the secured agent through Joule:
 
-<!-- TODO: Add screenshot of Joule calling the agent -->
+![Joule Result](../images/joule%20result.png)
 
 ---
 
