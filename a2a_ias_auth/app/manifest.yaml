@@ -1,0 +1,21 @@
+applications:
+  - name: currency-agent
+    memory: 512M
+    disk_quota: 1G
+
+    buildpacks:
+      - python_buildpack
+
+    env:
+      # SAP AI Core credentials
+      AICORE_AUTH_URL: "https://<your-subaccount>.authentication.sap.hana.ondemand.com"
+      AICORE_CLIENT_ID: "<your-aicore-client-id>"
+      AICORE_CLIENT_SECRET: "<your-aicore-client-secret>"
+      AICORE_RESOURCE_GROUP: "default"
+      AICORE_BASE_URL: "https://api.ai.<region>.aws.ml.hana.ondemand.com"
+
+      # IAS Authentication configuration
+      IAS_ISSUER: "https://<your-ias-tenant>.accounts.ondemand.com"
+      IAS_AUDIENCE: "<your-ias-client-id>"
+
+    command: uvicorn app:app --host 0.0.0.0 --port ${PORT}

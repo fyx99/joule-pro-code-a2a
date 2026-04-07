@@ -3,24 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
-ai_core_key.json
-service_key.json
-.sapdas_cookies.json
-
-principal_propagation_examples
-joule_pro_code_agent_principal_propagation_poc
-commands.txt
-a2a_xsuaa_auth
-a2a_ias_auth_old
-a2a_multiturn
-.claude
-
-
 # C extensions
 *.so
 
 # Distribution / packaging
-.DS_Store
 .Python
 build/
 develop-eggs/

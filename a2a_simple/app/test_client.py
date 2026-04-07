@@ -25,7 +25,7 @@ async def main() -> None:
 
     # --8<-- [start:A2ACardResolver]
 
-    base_url = 'https://currency-agent.cfapps.sap.hana.ondemand.com:443'
+    base_url = 'https://<currency-agent>.cfapps.sap.hana.ondemand.com:443'
 
     async with httpx.AsyncClient() as httpx_client:
         # Initialize A2ACardResolver
