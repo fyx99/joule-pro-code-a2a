@@ -228,3 +228,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+a2a_ias_auth/blog-a2a-auth-plain.txt
