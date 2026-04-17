@@ -1,0 +1,12 @@
+description: The Currency Agent supports converting between different currencies.
+target:
+  name: currency_agent_function
+  type: function
+  parameters:
+    - name: agent_context_id
+      value: $capability_context.agent_context_id
+
+
+capability_context:
+  - name: agent_context_id
+    value: $target_result.agent_context_id
