@@ -5,8 +5,11 @@ target:
   parameters:
     - name: agent_context_id
       value: $capability_context.agent_context_id
-
+    - name: agent_task_id
+      value: $capability_context.agent_task_id
 
 capability_context:
   - name: agent_context_id
     value: $target_result.agent_context_id
+  - name: agent_task_id
+    value: $target_result.agent_task_id
