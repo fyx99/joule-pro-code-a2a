@@ -1,10 +1,10 @@
-In my first post on the Agent-to-Agent Integration with Joule, I showed how to set up a minimal viable example. Without context handling, your agent forgets everything after each turn—making follow-up questions or clarifications impossible. This post covers how to enable multi-turn conversations between Joule and your custom agent using the A2A protocol's context management features.
+In my [first post on the Agent-to-Agent Integration with Joule](https://community.sap.com/t5/technology-blog-posts-by-sap/joule-a2a-connect-code-based-agents-into-joule/ba-p/14329279), I showed how to set up a minimal viable example. Without context handling, your agent forgets everything after each turn—making follow-up questions or clarifications impossible. This post covers how to enable multi-turn conversations between Joule and your custom agent using the A2A protocol's context management features.
 
 ## Scenario
 
 The scenario is straightforward: we have a custom-built agent integrated with Joule. Joule is an assistant used by multiple users and capable of handling multiple conversations at the same time. If our agent is a static one—like the currency converter shown in my previous post—it's enough to handle each delegated task as an individual conversation without history. But for this blog we want to think of a scenario where the agent might need additional input from the user in multi-turn conversations. For this purpose we look at the contextId and taskId that the A2A protocol introduces, to sync the conversation context between Joule and our agent.
 
-![Multi-Turn Conversation Flow](../images/joule-a2a-multiturn.drawio.png)
+![Multi-Turn Conversation Flow](../images/joule-a2a-multi-turn-scenario-diagram.jpg)
 
 ---
 
@@ -324,7 +324,7 @@ With the above implementation, our Currency Agent can now ask for additional inp
 
 This allows us to persist the sent messages on the agent server side and handle more complex scenarios that require back-and-forth interaction.
 
-With this setup, your agent can now ask clarifying questions, gather information incrementally, and maintain context across multiple exchanges [first post on Agent-to-Agent Integration with Joule](link-to-first-post).
+With this setup, your agent can now ask clarifying questions, gather information incrementally, and maintain context across multiple exchanges—all while Joule handles the routing and user interface. For the basic A2A integration setup, check out my [first post on Agent-to-Agent Integration with Joule](https://community.sap.com/t5/technology-blog-posts-by-sap/joule-a2a-connect-code-based-agents-into-joule/ba-p/14329279).
 
 Note: What we have not yet seen is our agent being able to ask Joule the orchestrator or other named agents via this interface for additional input. While in pure pro-code we already are able to call other A2A capable agents, the Joule standard Agents are not yet consumable. Announced at TechEd 25 this will change soon. 
 
