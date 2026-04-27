@@ -7,13 +7,17 @@ ai_core_key.json
 service_key.json
 .sapdas_cookies.json
 
+node-js-langchain-agent
+user-token-exchange
+sap-btp-saml2bearer-assertion
+btp-js-hitl
 principal_propagation_examples
 joule_pro_code_agent_principal_propagation_poc
-commands.txt
 a2a_xsuaa_auth
 a2a_ias_auth_old
 .claude
 *.bkp
+commands.txt2
 
 # C extensions
 *.so
