@@ -6,6 +6,7 @@ __pycache__/
 ai_core_key.json
 service_key.json
 .sapdas_cookies.json
+hana_data_import/creds/
 
 node-js-langchain-agent
 user-token-exchange
@@ -18,6 +19,12 @@ a2a_ias_auth_old
 .claude
 *.bkp
 commands.txt2
+credentials
+commands.txt
+convert_blog.py
+
+a2a_principal_propagation/old
+a2a_multiturn_async
 
 # C extensions
 *.so
