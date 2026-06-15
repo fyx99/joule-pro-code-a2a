@@ -1,0 +1,12 @@
+schema_version:  3.29.0   # be aware of the minimum version for agents
+
+metadata:
+  namespace: joule.ext    # very important to be in the "joule.ext" namespace for capabilities
+  name: bp_agent_capability
+  version: 1.0.2
+  display_name: Business Partner Agent Capability
+  description: Capability containing the Business Partner Agent (S/4HANA via principal propagation)
+
+system_aliases:
+  BUSINESS_PARTNER_AGENT:
+    destination: BUSINESS_PARTNER_AGENT # this is referencing the destination name

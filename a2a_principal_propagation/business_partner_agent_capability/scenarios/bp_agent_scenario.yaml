@@ -1,0 +1,4 @@
+description: The Business Partner Agent looks up business partners and customers from S/4HANA on behalf of the logged-in user (principal propagation via SAML Bearer through the BTP destination service).
+target:
+  name: bp_agent_function
+  type: function

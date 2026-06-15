@@ -1,0 +1,11 @@
+action_groups:
+  - actions:
+      - type: agent-request   # triggert den remote A2A custom agent
+        system_alias: BUSINESS_PARTNER_AGENT
+        agent_type: remote
+        result_variable: "apiResponse" # wird in der nachgelagerten message-action wieder rausgepickt
+      - type: message
+        message:
+          type: text
+          content: "<? apiResponse.body.artifacts[0].parts[0].text ?>"
+          markdown: true   # Markdown wie **bold** + Listen werden gerendert statt als Plaintext angezeigt
