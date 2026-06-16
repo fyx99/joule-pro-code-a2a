@@ -22,6 +22,7 @@ commands.txt2
 credentials
 commands.txt
 convert_blog.py
+manifest_example_working.yaml
 
 a2a_principal_propagation/old
 a2a_multiturn_async

@@ -1,0 +1,30 @@
+applications:
+  - name: business-partner-agent-principal-propagation
+    memory: 512M
+    disk_quota: 1G
+
+    buildpacks:
+      - python_buildpack
+
+    env:
+      # SAP AI Core credentials
+      AICORE_AUTH_URL: "https://.....authentication.sap.hana.ondemand.com"
+      AICORE_CLIENT_ID: "<REDACTED>"
+      AICORE_CLIENT_SECRET: "<REDACTED>"
+      AICORE_RESOURCE_GROUP: "default"
+      AICORE_BASE_URL: "https://api.ai......ml.hana.ondemand.com"
+
+      # IAS Credentials
+      IAS_ISSUER: "https://asqo0oaz2.accounts.ondemand.com"
+      # IAS Application Custom Agent APP Client Id
+      IAS_AUDIENCE: "4a3.......0619"
+      IAS_REQUIRED_SCOPE: "a2a_custom_agent_app_api"
+
+      # === Destination Service (Principal Propagation -> S/4) ===
+      DEST_SERVICE_URL: "https://destination-configuration.cfapps.eu10.hana.ondemand.com"
+      DEST_TOKEN_URL: "https://........authentication.eu10.hana.ondemand.com/oauth/token"
+      DEST_CLIENT_ID: "sb-cl.......nation-xsappname!b404"
+      DEST_CLIENT_SECRET: "63dca5b......Uwv5Mwx8BQ="
+      DEST_NAME: "S4_PUBLIC_SAML"
+
+    command: uvicorn app:app --host 0.0.0.0 --port ${PORT}
