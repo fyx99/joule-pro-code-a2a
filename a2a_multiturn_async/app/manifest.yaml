@@ -1,0 +1,28 @@
+applications:
+  - name: currency-agent-async
+    memory: 512M
+    disk_quota: 1G
+
+    buildpacks:
+      - python_buildpack
+
+    env:
+      # SAP AI Core credentials (for the LangGraph agent's LLM)
+      AICORE_AUTH_URL: "https://.....authentication.sap.hana.ondemand.com"
+      AICORE_CLIENT_ID: "<REDACTED>"
+      AICORE_CLIENT_SECRET: "<REDACTED>"
+      AICORE_RESOURCE_GROUP: "default"
+      AICORE_BASE_URL: "https://api.ai......ml.hana.ondemand.com"
+
+      # === Destination Service (Principal Propagation -> Joule async callback) ===
+      # All values come from the dest-service service-key in the Joule subaccount.
+      DEST_SERVICE_URL: "https://destination-configuration.cfapps.eu10.hana.ondemand.com"
+      DEST_TOKEN_URL: "https://........authentication.eu10.hana.ondemand.com/oauth/token"
+      DEST_CLIENT_ID: "sb-cl.......nation-xsappname!b404"
+      DEST_CLIENT_SECRET: "<REDACTED>"
+      DEST_NAME: "JOULE_ASYNC_API"
+
+      # Public URL of this app — written into the Agent Card.
+      PUBLIC_URL: "https://currency-agent-async.cfapps.sap.hana.ondemand.com"
+
+    command: uvicorn app:app --host 0.0.0.0 --port ${PORT}
