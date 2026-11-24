@@ -1,0 +1,5 @@
+schema_version: 1.2.0
+name: test_agent_assistant
+capabilities:
+  - type: local
+    folder: ./currency_agent_capability

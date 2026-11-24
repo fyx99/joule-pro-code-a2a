@@ -1,0 +1,40 @@
+parameters:
+  - name: agent_context_id
+    optional: true
+  - name: agent_task_id
+    optional: true
+
+action_groups:
+  - actions:
+      - type: agent-request
+        system_alias: CURRENCY_AGENT
+        agent_type: remote
+        body:
+          contextId: "<? agent_context_id ?>"
+          taskId: "<? agent_task_id ?>"
+          configurations:
+            pushNotifications: true
+        result_variable: "_agent_response"
+      - type: message
+        message:
+          type: text
+          content: "LOG: Context ID: <? _agent_response.body.contextId ?> | Task ID: <? _agent_response.body.id ?> | Status: <? _agent_response.body.status.state ?>"
+  - condition: _agent_response.body != null && _agent_response.body.status != null && _agent_response.body.status.state == "input-required"
+    actions:
+    - type: message
+      message:
+        type: text
+        content: <? _agent_response.body.status.message.parts[0].text ?>
+        markdown: true
+  - condition: _agent_response.body != null && _agent_response.body.artifacts != null && _agent_response.body.artifacts[0].parts != null
+    actions:
+    - type: message
+      message:
+        type: text
+        content: <? _agent_response.body.artifacts[0].parts[0].text ?>
+        markdown: true
+
+result:
+  agent_result: <? _agent_response ?>
+  agent_context_id: "<? _agent_response != null && _agent_response.body != null && _agent_response.body.contextId != null ? _agent_response.body.contextId : '' ?>"
+  agent_task_id: "<? _agent_response.body.status.state == 'completed' ? null : _agent_response.body.id ?>"

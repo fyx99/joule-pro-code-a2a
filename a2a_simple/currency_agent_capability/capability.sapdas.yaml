@@ -1,0 +1,12 @@
+schema_version:  3.27.0   # be aware of the minimum version for agents
+
+metadata:
+  namespace: joule.ext    # very important to be in the "joule.ext" namespace for capabilities
+  name: currency_agent_capability
+  version: 1.0.0
+  display_name: Currency Agent Capability
+  description: Capability containing the currency agent
+
+system_aliases:
+  CURRENCY_AGENT:
+    destination: CURRENCY_AGENT # this is referencing the destination name

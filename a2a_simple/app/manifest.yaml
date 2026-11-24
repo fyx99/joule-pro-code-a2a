@@ -1,0 +1,17 @@
+applications:
+  - name: currency-agent
+    memory: 512M
+    disk_quota: 1G
+
+    buildpacks:
+      - python_buildpack
+
+    env:
+      # Add your SAP AI Core credentials here
+      AICORE_AUTH_URL: "<your-auth-url>"
+      AICORE_CLIENT_ID: "<your-client-id>"
+      AICORE_CLIENT_SECRET: "<your-client-secret>"
+      AICORE_RESOURCE_GROUP: "<your-resource-group>"
+      AICORE_BASE_URL: "<your-base-url>"
+
+    command: uvicorn app:app --host 0.0.0.0 --port ${PORT}

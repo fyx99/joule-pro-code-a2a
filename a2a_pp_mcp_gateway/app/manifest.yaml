@@ -1,0 +1,31 @@
+applications:
+  - name: business-partner-agent-mcp-gateway
+    memory: 512M
+    disk_quota: 1G
+
+    buildpacks:
+      - python_buildpack
+
+    env:
+      # SAP AI Core credentials
+      AICORE_AUTH_URL: "https://.....authentication.sap.hana.ondemand.com"
+      AICORE_CLIENT_ID: "<REDACTED>"
+      AICORE_CLIENT_SECRET: "<REDACTED>"
+      AICORE_RESOURCE_GROUP: "default"
+      AICORE_BASE_URL: "https://api.ai......ml.hana.ondemand.com"
+
+      # IAS Credentials (inbound A2A auth of THIS agent — unchanged vs. the pp agent)
+      IAS_ISSUER: "https://<your-ias-tenant>.accounts.ondemand.com"
+      # IAS Application Custom Agent APP Client Id (UUID)
+      IAS_AUDIENCE: "<your-ias-app-client-id>"
+      IAS_REQUIRED_SCOPE: "a2a_custom_agent_app_api"
+
+      # === MCP Gateway (SAP Integration Suite) -> S/4 ===
+      # The agent no longer calls the destination service directly; it forwards
+      # the user JWT as Bearer to this MCP endpoint, which resolves the
+      # OAuth2SAMLBearerAssertion destination to S/4 on behalf of the user.
+      MCP_URL: "https://integration-suite-prem-<your-tenant-guid>.a.integration.cloud.sap/s4_bp_mcp"
+      MCP_TOOL: "get_A_BusinessPartner"
+      MCP_PROTOCOL_VERSION: "2025-06-18"
+
+    command: uvicorn app:app --host 0.0.0.0 --port ${PORT}
